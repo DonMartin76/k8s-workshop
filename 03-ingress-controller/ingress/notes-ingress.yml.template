@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: notes
+#  Use these for kube-lego
+#  annotations:
+#    kubernetes.io/tls-acme: "true"
+#    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - ${APP_HOST}
+    secretName: notes-tls
+
+  rules:
+  - host: ${APP_HOST}
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: notes-app
+          servicePort: 80

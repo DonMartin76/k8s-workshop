@@ -3,7 +3,7 @@
 Now we will deploy a first container to our cluster, just to get a hang of how it works. From the repository root, use the following command:
 
 ```
-~/Projects/k8s-workshop$ kubectl apply -f 02-simple-app/deployment/markdown-notes-app.yml
+~/Projects/k8s-workshop$ kubectl apply -f 02-simple-app/deployment/notes-deployment.yml
 deployment "notes-app" created
 ```
 

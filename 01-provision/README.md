@@ -7,6 +7,7 @@ Further prerequisites:
 * [Installed Azure Command Line 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * A usable bash console, e.g. "Terminal" on macOS, "git bash" (if you're still on Win7) or ["Ubuntu bash" for Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide).
 * An ssh identity in `~/.ssh/id_rsa.pub`
+* An `openssl` installation (check whether `openssl` in bash gives you a prompt, otherwise install it)
 
 ## Provisioning the cluster
 
