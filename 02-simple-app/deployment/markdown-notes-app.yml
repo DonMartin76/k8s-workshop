@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: notes-app
+spec:
+  replicas: 2
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: notes-app
+    spec:
+      containers:
+      - image: "donmartin76/markdown-notes-app:v1"
+        name: note-app
+        env:
+        - name: CLIENT_ID
+          value: "this-is-something-invalid"
+        - name: USE_GITHUB
+          value: "true"
+        - name: USE_GOOGLE
+          value: ""
+        - name: AUTH_SERVER
+          value: "https://dummy.org/auth-passport"
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /settings.json
+            port: http
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+          periodSeconds: 15
+      restartPolicy: Always
