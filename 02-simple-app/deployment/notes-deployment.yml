@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: notes-app
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       creationTimestamp: null
@@ -12,7 +12,8 @@ spec:
     spec:
       containers:
       - image: "donmartin76/markdown-notes-app:v1"
-        name: note-app
+        imagePullPolicy: Always
+        name: notes-app
         env:
         - name: CLIENT_ID
           value: "this-is-something-invalid"
@@ -22,6 +23,8 @@ spec:
           value: ""
         - name: AUTH_SERVER
           value: "https://dummy.org/auth-passport"
+        - name: API_GATEWAY
+          value: "api.dummy.notvalid.io"
         ports:
         - name: http
           containerPort: 80

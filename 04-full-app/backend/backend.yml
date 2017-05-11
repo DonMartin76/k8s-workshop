@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    service: notes-api
+  name: notes-api
+spec:
+  ports:
+  - name: "http"
+    port: 3100
+    protocol: TCP
+    targetPort: 3100
+  selector:
+    service: notes-api
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: notes-api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: notes-api
+    spec:
+      containers:
+      - image: "donmartin76/markdown-notes-api:v1"
+        imagePullPolicy: Always
+        name: notes-api
+        ports:
+        - name: http
+          containerPort: 3100
+          protocol: TCP
+      restartPolicy: Always

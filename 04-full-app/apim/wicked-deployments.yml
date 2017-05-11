@@ -1,0 +1,191 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: portal-api
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: portal-api
+    spec:
+      containers:
+      - name: portal-api
+        image: haufelexware/wicked.portal-api:0.11.5
+        imagePullPolicy: Always
+        env:
+        - name: NODE_ENV
+          value: acs-k8s
+        - name: GIT_REPO
+          valueFrom:
+            configMapKeyRef:
+              name: apim-config
+              key: GIT_REPO
+        - name: PORTAL_CONFIG_KEY
+          valueFrom:
+            secretKeyRef:
+              name: apim-secrets
+              key: PORTAL_CONFIG_KEY
+        - name: DEBUG
+          value: "wicked-sdk:*,portal-api:*"
+        - name: PORTAL_NETWORK_PORTALHOST
+          valueFrom:
+            configMapKeyRef:
+              name: apim-config
+              key: PORTAL_NETWORK_PORTALHOST
+        - name: PORTAL_NETWORK_APIHOST
+          valueFrom:
+            configMapKeyRef:
+              name: apim-config
+              key: PORTAL_NETWORK_APIHOST
+        - name: GITHUB_CLIENTID
+          valueFrom:
+            secretKeyRef:
+              name: apim-secrets
+              key: GITHUB_CLIENTID
+        - name: GITHUB_CLIENTSECRET
+          valueFrom:
+            secretKeyRef:
+              name: apim-secrets
+              key: GITHUB_CLIENTSECRET
+        - name: PORTAL_AUTH_GITHUB_CLIENTID
+          valueFrom:
+            secretKeyRef:
+              name: apim-secrets
+              key: PORTAL_AUTH_GITHUB_CLIENTID
+        - name: PORTAL_AUTH_GITHUB_CLIENTSECRET
+          valueFrom:
+            secretKeyRef:
+              name: apim-secrets
+              key: PORTAL_AUTH_GITHUB_CLIENTSECRET
+        ports:
+        - containerPort: 3001
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/portal-api/dynamic
+          name: portal-api-data-dynamic
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 3001
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          timeoutSeconds: 2
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 3001
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          timeoutSeconds: 2
+      volumes:
+      - name: portal-api-data-dynamic
+        emptyDir: {}
+#        persistentVolumeClaim:
+#          claimName: idesk-apim-dynamicdata
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: portal
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: portal
+    spec:
+      containers:
+      - name: portal
+        image: haufelexware/wicked.portal:0.11.5
+        imagePullPolicy: Always
+        env:
+        - name: DEBUG
+          value: "wicked-sdk:*,portal:*"
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          timeoutSeconds: 2
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          timeoutSeconds: 2
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: portal-kong-adapter
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: portal-kong-adapter
+    spec:
+      containers:
+      - image: haufelexware/wicked.portal-kong-adapter:0.11.5
+        name: portal-kong-adapter
+        imagePullPolicy: Always
+        env:
+        - name: DEBUG
+          value: "wicked-sdk:*,kong-adapter:*"
+        ports:
+        - containerPort: 3002
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 3002
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          timeoutSeconds: 2
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 3002
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          timeoutSeconds: 2
+      restartPolicy: Always
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: auth-passport
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: auth-passport
+    spec:
+      containers:
+      - image: haufelexware/wicked.auth-passport:dev
+        name: auth-passport
+        imagePullPolicy: Always
+        env:
+        - name: DEBUG
+          value: "*"
+        - name: AUTH_SERVER_BASEPATH
+          value: "/auth-passport"
+        ports:
+        - containerPort: 3010
+          protocol: TCP
+      restartPolicy: Always

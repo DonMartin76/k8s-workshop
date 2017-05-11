@@ -1,17 +1,10 @@
 # Provision a cluster on Azure Container Service
 
-If you haven't already, please create a `env.sh` from the [template file](../env.sh.template) at the root of this repository and fill in the information needed (Service Principal credentials and so on).
-
-Further prerequisites:
-
-* [Installed Azure Command Line 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-* A usable bash console, e.g. "Terminal" on macOS, "git bash" (if you're still on Win7) or ["Ubuntu bash" for Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide).
-* An ssh identity in `~/.ssh/id_rsa.pub`
-* An `openssl` installation (check whether `openssl` in bash gives you a prompt, otherwise install it)
+Make sure you fulfill the prerequisites described on the main [README](../README.md).
 
 ## Provisioning the cluster
 
-Run the following commands from the root of this repository:
+Run the following commands from the root of this repository to prime your environment variables and log in to Azure via the command line:
 
 ```
 ~/Projects/k8s-workshop$ . env.sh

@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: portal
+  name: portal
+spec:
+  ports:
+  - name: "3000"
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    service: portal
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: portal-api
+  name: portal-api
+spec:
+  ports:
+  - name: "3001"
+    port: 3001
+    protocol: TCP
+    targetPort: 3001
+  selector:
+    service: portal-api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: portal-kong-adapter
+  name: portal-kong-adapter
+spec:
+  ports:
+  - name: "3002"
+    port: 3002
+    protocol: TCP
+    targetPort: 3002
+  selector:
+    service: portal-kong-adapter
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: auth-passport
+  name: auth-passport
+spec:
+  ports:
+  - name: "3010"
+    port: 3010
+    protocol: TCP
+    targetPort: 3010
+  selector:
+    service: auth-passport
