@@ -15,3 +15,23 @@ Check the following prerequisites:
 * An ssh identity in `~/.ssh/id_rsa.pub`
 * An `openssl` installation (check whether `openssl` in bash gives you a prompt, otherwise install it)
 * A GitHub account
+
+## Following along
+
+Go through the workshop/lab description in the order of the steps; each step usually needs what's created in the previous step(s), so skipping steps will most probably not work. Like, at all.
+
+Additionally, to get the big picture, you should have a look at the presentation which belongs to this workshop (TBA).
+
+So, start here:
+
+* [Provision the cluster](01-provision)
+* [Deploy a simple application](02-simple-app)
+* [On Ingress Controllers and stuff](03-ingress-controller)
+* [Deploying the entire application](04-full-app)
+* [Updating a deployment (rolling updates)](05-update)
+* [Cleaning up after yourself](06-cleanup)
+* [Appendix - Useful Kubernetes commands](07-appendix)
+
+HAVE FUN!
+
+Please feedback into the issues of this repository, so that I can improve for the next time.
