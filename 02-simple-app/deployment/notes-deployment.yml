@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: notes-app
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       creationTimestamp: null

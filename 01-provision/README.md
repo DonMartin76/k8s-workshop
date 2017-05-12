@@ -30,9 +30,11 @@ Now you're logged in in the local bash with the given Azure Service Principal. W
     --agent-vm-size Standard_DS3_v2
 ```
 
-That last thing will take quite a while. If you want, point your browser to https://portal.azure.com, log in using your corporate username and password; the subscription will have been added to your account (and will be removed after the workshop).
+That last thing will take quite a while (several minutes, up to ten). If you want, point your browser to https://portal.azure.com, log in using your corporate username and password; the subscription will have been added to your account (and will be removed after the workshop).
 
 There you will be able to see your newly create resource group, and the resources which the ACS provisioning script creates for the Kubernetes cluster, like the Agent and Master VMs, a VNET, and a couple of load balancers.
+
+Meanwhile, install the command line utility:
 
 ## Installing `kubectl`
 
@@ -55,6 +57,8 @@ As an alternative, the `az` command line tool also provides a way to install the
 ```
 
 ## Retrieving the `kubeconfig`
+
+After the cluster has been provisioned successfully (I hope we don't run into ARM throttling here, this is going to be interesting).
 
 To be able to use `kubectl`, the CLI tool needs to know where the cluster resides, and with which credentials it can talk to it. ACS puts a valid `kubeconfig` file on the master node(s), at `/home/<admin user>/.kube/config`, with our above configuration at `/home/azureuser/.kube/config`.
 

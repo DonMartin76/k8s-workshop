@@ -12,16 +12,20 @@ Inspect what's running on the cluster by issuing the following command:
 ```
 ~/Projects/k8s-workshop$ kubectl get pods
 NAME                         READY     STATUS              RESTARTS   AGE
-notes-app-2134041113-h828f   0/1       ContainerCreating   0          6s
+notes-app-3457614599-0f2hh   0/1       ContainerCreating   0          6s
+notes-app-3457614599-wml41   0/1       ContainerCreating   0          6s
 ```
 
-You can see that Kubernetes has started creating the containers; it will automatically pull the images from Docker Hub. After a minute or so, you should have an instanc of the marvellous "Markdown Notes" application up and running on your cluster:
+You can see that Kubernetes has started creating the containers; it will automatically pull the images from Docker Hub. After a minute or so, you should have two instances of the marvellous "Markdown Notes" application up and running on your cluster:
 
 ```
-~/Projects/k8s-workshop$ kubectl get pods
-NAME                         READY     STATUS    RESTARTS   AGE
-notes-app-2134041113-h828f   1/1       Running   0          1m
+~/Projects/k8s-workshop$ $ kubectl get pods -owide
+NAME                         READY     STATUS    RESTARTS   AGE       IP           NODE
+notes-app-3457614599-0f2hh   1/1       Running   0          39s       10.244.1.5   k8s-agent-54c9989d-0
+notes-app-3457614599-wml41   1/1       Running   0          39s       10.244.2.3   k8s-agent-54c9989d-1
 ```
+
+Note the usage of the additional parameter `-owide`; it adds some more information to the output ("wide" output), like the internal IP address of the pod, and on which agent the container runs.
 
 ## Accessing the pods
 
@@ -51,12 +55,37 @@ Now press Ctrl-C to stop the port forwarding, and issue the following command:
 
 This is the log to `stdout` of the container; you will see the access you did, plus some configuration of the container. That configuration is obviously bogus for now, but it's fine, we'll deal with this a little later.
 
+If you don't get any logs from the container, pick the other one. It's internally load balanced, so you can't be sure where the traffic actually goes.
+
+## Playing whack-a-pod
+
+To see what a deployment (and its underlying replica set) does, it's interesting to delete a pod from the running cluster. Run a `kubectl get pods` and copy one of the pod IDs to the clipboard, then do the following:
+
+```
+~/Projects/k8s-workshop$ kubectl delete pod notes-app-3457614599-0f2hh
+pod "notes-app-3457614599-0f2hh" deleted
+```
+
+Now check on the pods (`kubectl get pods`), and you'll see something like this:
+
+```
+~/Projects/k8s-workshop$ kubectl get pods
+NAME                                     READY     STATUS        RESTARTS   AGE
+notes-app-3457614599-0f2hh               1/1       Terminating   0          11m
+notes-app-3457614599-k0v46               1/1       Running       0          11m
+notes-app-3457614599-lffr6               1/1       Running       0          9s
+```
+
+The pod with the ID `notes-app-3457614599-0f2hh` is not running anymore (`Terminated`), but instead a new container `notes-app-3457614599-lffr6` was created automatically to meet the specification we gave Kubernetes: "Please run two instances of the following container".
+
+This is also what happens if e.g. a node goes down and all pods inside it cannot respond anymore.
+
 ## Using the Kubernetes Dashboard
 
 Another useful command is `kubectl proxy`, which lets you view the so called "Kubernetes Dashboard" (and, for other use cases, proxy the Kubernetes API to your localhost):
 
 ```
-~/Projects/k8s-workshop$ kubectl logs proxy
+~/Projects/k8s-workshop$ kubectl proxy
 Starting to serve on 127.0.0.1:8001
 ```
 

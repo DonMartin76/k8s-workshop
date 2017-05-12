@@ -59,7 +59,7 @@ First, create self signed certificates using the following script
 Then add them as "Secrets" to the Kubernetes cluster, so that we can refer to them later on:
 
 ```
-~/Projects/k8s-workshop$ 03-ingress-controller/certificates/add-certificates.sh 
+~/Projects/k8s-workshop$ ./03-ingress-controller/certificates/add-certificates.sh 
 secret "portal-tls" created
 secret "api-tls" created
 secret "notes-tls" created
@@ -113,6 +113,11 @@ Above, you defined special DNS entries for **your** cluster, and thus we need to
 ```
 ~/Projects/k8s-workshop$ ./template.sh 03-ingress-controller/ingress/notes-ingress.yml.template
 Templating 03-ingress-controller/ingress/notes-ingress.yml.template to 03-ingress-controller/ingress/notes-ingress.yml...
+```
+
+Check out what the templating mechanism created, verify that the `hosts` entry is set correctly:
+
+```
 ~/Projects/k8s-workshop$ cat 03-ingress-controller/ingress/notes-ingress.yml
 apiVersion: extensions/v1beta1
 kind: Ingress
