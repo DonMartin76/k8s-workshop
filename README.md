@@ -1,17 +1,18 @@
-# k8s-workshop
+# Haufe Kubernetes Lab/Workshop
 
-Material for a Kubernetes Workshop
+This repository contains material for a Kubernetes Workshop/Lab, hopefully just about enough for until lunch (3-4 hours).
 
 ## Prerequisites
 
 Check the following prerequisites:
 
+* You should be familiar with containers and docker, even if it's not a true prerequisite. But it does help.
 * Basic familiarity with the [Azure Portal](https://portal.azure.com); make sure you are able to log in using your `<login>@haufe.com` ID
-* [Installed Azure Command Line 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+* [Installed Azure Command Line 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli); in case you already had it install, please run a `az component update`
 * A usable bash console, e.g. "Terminal" on macOS, "git bash" (if you're still on Win7) or ["Ubuntu bash" for Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide).
-* An ssh identity in `~/.ssh/id_rsa.pub`
+* An ssh identity in `~/.ssh/id_rsa[.pub]`
 * An `openssl` installation (check whether `openssl` in bash gives you a prompt, otherwise install it)
-* A GitHub account
+* A GitHub account (we need this to provision OAuth2 credentials)
 
 ## Creating an `env.sh`
 
