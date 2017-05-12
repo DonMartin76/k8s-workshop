@@ -16,6 +16,15 @@ Check the following prerequisites:
 * An `openssl` installation (check whether `openssl` in bash gives you a prompt, otherwise install it)
 * A GitHub account
 
+## Clone this repository before you start
+
+You will need all the things inside this repository, so please clone the repository onto your local machine. Throughout the entire workshop/lab, it's assumed that the repository is placed in `~/Projects/k8s-workshop`, so wherever you see commands which need to be issued from the command line, this is the directory you should have `cd`:d into.
+
+```
+~/Projects$ git clone https://github.com/DonMartin76/k8s-workshop
+Cloning into "k8s-workshop"...
+```
+
 ## Following along
 
 Go through the workshop/lab description in the order of the steps; each step usually needs what's created in the previous step(s), so skipping steps will most probably not work. Like, at all.
