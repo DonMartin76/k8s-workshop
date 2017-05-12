@@ -23,6 +23,8 @@ You will need all the things inside this repository, so please clone the reposit
 ```
 ~/Projects$ git clone https://github.com/DonMartin76/k8s-workshop
 Cloning into "k8s-workshop"...
+~/Projects$ cd k8s-workshop
+~/Projects/k8s-workshop$ # Happy labbing!
 ```
 
 ## Following along
