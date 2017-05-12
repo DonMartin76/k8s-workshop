@@ -10,6 +10,7 @@ Create a `env.sh` from the [template file](env.sh.template) at the root of this 
 
 Check the following prerequisites:
 
+* Basic familiarity with the [Azure Portal](https://portal.azure.com); make sure you are able to log in using your `<login>@haufe.com` ID
 * [Installed Azure Command Line 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * A usable bash console, e.g. "Terminal" on macOS, "git bash" (if you're still on Win7) or ["Ubuntu bash" for Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide).
 * An ssh identity in `~/.ssh/id_rsa.pub`
