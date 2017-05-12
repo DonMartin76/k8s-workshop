@@ -3,3 +3,4 @@ service-principals.txt
 env.sh
 kubeconfig*
 /certificates/
+/00-prep/

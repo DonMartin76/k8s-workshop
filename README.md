@@ -2,11 +2,7 @@
 
 Material for a Kubernetes Workshop
 
-## Creating an `env.sh`
-
-Create a `env.sh` from the [template file](env.sh.template) at the root of this repository and fill in the information needed (Service Principal credentials and so on). The data you need for the first section should have been mailed to you prior to the workshop; if not, contact one of the organizers.
-
-## Further prerequisites
+## Prerequisites
 
 Check the following prerequisites:
 
@@ -16,6 +12,10 @@ Check the following prerequisites:
 * An ssh identity in `~/.ssh/id_rsa.pub`
 * An `openssl` installation (check whether `openssl` in bash gives you a prompt, otherwise install it)
 * A GitHub account
+
+## Creating an `env.sh`
+
+After you have received the credentials from the organizers (the service principal definition), create a `env.sh` from the [template file](env.sh.template) at the root of this repository and fill in the information needed (Service Principal credentials and so on). The data you need for the first section should have been sent to you just prior to the workshop via Rocket.Chat; if not, contact one of the organizers.
 
 ## Clone this repository before you start
 
