@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ ! -f "env.sh" ]; then
+    echo "ERROR: File env.sh not found."
+    exit 1
+fi
+
+source ./env.sh
+
 mkdir -p certificates
 
 openssl req -x509 -newkey rsa:2048 -keyout certificates/portal-key.pem -out certificates/portal-cert.pem -nodes -subj "/CN=${PORTAL_NETWORK_PORTALHOST}" -days 365

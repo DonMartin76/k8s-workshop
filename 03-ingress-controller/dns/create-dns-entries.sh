@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ ! -f "env.sh" ]; then
+    echo "ERROR: File env.sh not found."
+    exit 1
+fi
+
+source ./env.sh
+
 if [ -z "$1" ]; then
     echo "Usage: $0 <ip of load balancer>"
     exit 1

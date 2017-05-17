@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ ! -f "env.sh" ]; then
+    echo "ERROR: File env.sh not found."
+    exit 1
+fi
+
+source ./env.sh
+
 if kubectl get configmap apim-config &> /dev/null; then
     kubectl delete configmap apim-config
 fi

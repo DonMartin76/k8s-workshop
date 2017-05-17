@@ -4,10 +4,17 @@ Make sure you fulfill the prerequisites described on the main [README](../README
 
 ## Provisioning the cluster
 
-Run the following commands from the root of this repository to prime your environment variables and log in to Azure via the command line:
+Run the following commands from the root of this repository to prime your environment variables and log in to Azure via the command line.
+
+Load the environment variables into your terminal session:
 
 ```
 ~/Projects/k8s-workshop$ . env.sh
+```
+
+Then log in to Azure using the `az` command line:
+
+```
 ~/Projects/k8s-workshop$ az login --service-principal -u $SP_APPID -p $SP_PASSWORD -t $SP_TENANT
 ...
 ~/Projects/k8s-workshop$ az account set --subscription $SP_SUBSCRIPTION
@@ -68,10 +75,9 @@ For convenience, the `az` tool provides the following command to copy the file f
 ~/Projects/k8s-workshop$ az acs kubernetes get-credentials --resource-group ${YOUR_NAME} \
     --name ${YOUR_NAME} \
     --file ./kubeconfig
-~/Projects/k8s-workshop$ export KUBECONFIG=`pwd`/kubeconfig
 ```
 
-Now you will have a local `kubeconfig` file which contains the credentias and URL to talk to the Kubernetes cluster, and with the env variable `KUBECONFIG` you let `kubectl` use this exact file. Otherwise, `kubectl` would search in `~/.kube/config`, but it's often more convenient to explicitly specify which `kubeconfig` file you want to use.
+Now you will have a local `kubeconfig` file which contains the credentias and URL to talk to the Kubernetes cluster. If you check the `env.sh` file you will find an environment variable `KUBECONFIG` which already points to this file; this means `kubectl` will use this configuration file. Otherwise, `kubectl` would search in `~/.kube/config`, but it's often more convenient to explicitly specify which `kubeconfig` file you want to use.
 
 ## Verify cluster connectivity
 
@@ -85,4 +91,4 @@ k8s-agent-54721596-1    Ready                      9m        v1.5.3
 k8s-master-54721596-0   Ready,SchedulingDisabled   9m        v1.5.3
 ```
 
-Woo!
+Woohoo!

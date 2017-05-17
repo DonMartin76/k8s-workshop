@@ -33,7 +33,7 @@ Cloning into "k8s-workshop"...
 
 Go through the workshop/lab description in the order of the steps; each step usually needs what's created in the previous step(s), so skipping steps will most probably not work. Like, at all.
 
-Additionally, to get the big picture, you should have a look at the presentation which belongs to this workshop (TBA).
+Additionally, to get the big picture, you should have a look at the [presentation which belongs to this workshop](kubernetes-workshop-20170517-v1.pdf).
 
 So, start here:
 
