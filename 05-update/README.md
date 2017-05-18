@@ -85,3 +85,9 @@ Kubernetes is terminating the pods one by one, and creates new ones at the same 
 In this case, both `maxUnavailable` and `maxSurge` are set to `1`, which means Kubernetes replaces as fast as it can, while keeping the minimum number of available pods at 9 (10 - `maxUnavailable`), and the count of pods in total under or at 11 (10 + `maxSurge`), which is why in the above example you can see one pod in state `Terminating` and two pods in state `Init:0/1` (10 - 1 + 2 = 11).
 
 After one to two minutes, the entire replacement process should have finished, and the new version of the application should be online (you may need to refresh the browser, it's static files served for the SPA after all, the browser caches most things, so an explicit reload may be needed).
+
+You can also try issuing the following command to see in real time what Kubernetes does in terms of terminating and recreating containers:
+
+```
+~/Projects/k8s-workshop$ kubect get pods --watch
+```
