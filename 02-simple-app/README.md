@@ -37,7 +37,7 @@ Forwarding from 127.0.0.1:8080 -> 80
 Forwarding from [::1]:8080 -> 80
 ```
 
-Browse to [localhost:8080](http://localhost:8080), and you will see the start page of the Markdown Notes app. It will not work yet, as the underlying API is missing, but you can still see that the container is indeed running and serving the content inside the cluster from port 80.
+Browse to [127.0.0.1:8080](http://127.0.0.1:8080), and you will see the start page of the Markdown Notes app. It will not work yet, as the underlying API is missing, but you can still see that the container is indeed running and serving the content inside the cluster from port 80.
 
 Now press Ctrl-C to stop the port forwarding, and issue the following command:
 
@@ -50,7 +50,7 @@ Now press Ctrl-C to stop the port forwarding, and issue the following command:
       "profileUrl": "https://dummy.org/auth-passport/github/profile",
       "bsStyle": "default"
     }]
-}127.0.0.1 - - [10/May/2017:11:05:29 +0000] "GET /static/js/main.ddcb0bdd.js HTTP/1.1" 200 138138 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30"
+}127.0.0.1 - - [10/May/2017:11:05:29 +0000] "GET /static/js/main.ddcb0bdd.js HTTP/1.1" 200 138138 "http://127.0.0.1:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30"
 ```
 
 This is the log to `stdout` of the container; you will see the access you did, plus some configuration of the container. That configuration is obviously bogus for now, but it's fine, we'll deal with this a little later.
@@ -89,6 +89,6 @@ Another useful command is `kubectl proxy`, which lets you view the so called "Ku
 Starting to serve on 127.0.0.1:8001
 ```
 
-While you have not yet pressed Ctrl-C, you will now be able to browse the Kubernetes Dashboard at [localhost:8001/ui](http://localhost:8001/ui).
+While you have not yet pressed Ctrl-C, you will now be able to browse the Kubernetes Dashboard at [127.0.0.1:8001/ui](http://127.0.0.1:8001/ui).
 
 The Dashboard exposes most everything from the cluster, like Deployments, Services, ConfigMaps, Node status, ReplicaSets, Volume Configurations and more. This is a valuable tool, but over time you tend to either use other Dashboarding tools, or to just use `kubectl` from the command line.

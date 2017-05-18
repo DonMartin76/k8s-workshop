@@ -90,7 +90,7 @@ The deployment/replica set will immediately see that there is a pod missing in t
 
 ## Display the Kubernetes Dashboard
 
-The following command proxies the Kubernetes Dashboard to your localhost:
+The following command proxies the Kubernetes API and Dashboard to your localhost at `127.0.0.1:8001`:
 
 ```
 ~/Projects/k8s-workshop$ kubectl proxy

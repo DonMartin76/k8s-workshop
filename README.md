@@ -10,13 +10,15 @@ Check the following prerequisites:
 * Basic familiarity with the [Azure Portal](https://portal.azure.com); make sure you are able to log in using your `<login>@haufe.com` ID
 * [Installed Azure Command Line 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli); in case you already had it install, please run a `az component update`
 * A usable bash console, e.g. "Terminal" on macOS, "git bash" (if you're still on Win7) or ["Ubuntu bash" for Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide).
-* An ssh identity in `~/.ssh/id_rsa[.pub]`
+* An ssh identity in `~/.ssh/id_rsa[.pub]`, **without** password protection
 * An `openssl` installation (check whether `openssl` in bash gives you a prompt, otherwise install it)
 * A GitHub account (we need this to provision OAuth2 credentials)
 
 ## Creating an `env.sh`
 
 After you have received the credentials from the organizers (the service principal definition), create a `env.sh` from the [template file](env.sh.template) at the root of this repository and fill in the information needed (Service Principal credentials and so on). The data you need for the first section should have been sent to you just prior to the workshop via Rocket.Chat; if not, contact one of the organizers.
+
+**Important**: For `YOUR_NAME`, use **your first name**, without any delimiters or spaces, **in lowercase**! E.g., `martin`, `annemarie`, but **not** `Trevor Hannigan`, `MEMYSELFANDI` or `what-ever`. Most things will still work, but you will run into trouble with `VHOST` entries and certificate definitions later on in the workshop.
 
 ## Clone this repository before you start
 
