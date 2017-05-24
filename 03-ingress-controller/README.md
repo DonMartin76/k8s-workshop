@@ -73,7 +73,7 @@ We will now create real DNS entries for the end points we want our cluster to se
 * `api.<your name>.k8s.donmartin76.com`: The API Gateway's end point
 * `portal.<your name>.k8s.donmartin.com`: The API Portal of wicked.haufe.io
 
-This can be done using the `az network dns` command suite, and is wrapped up in the following shell script. Copy the IP address and enter it as a parameter to the `create-dns-entries.sh` script:
+This can be done using the `az network dns` command suite, and is wrapped up in the following shell script. Copy the IP address of the Ingress Controller's load balancer (`kubectl get service ingress-nginx`, the "EXTERNAL-IP", see above) and enter it as a parameter to the `create-dns-entries.sh` script:
 
 ```
 ~/Projects/k8s-workshop$ $ ./03-ingress-controller/dns/create-dns-entries.sh <load balancer ip>
