@@ -97,3 +97,13 @@ The following command proxies the Kubernetes API and Dashboard to your localhost
 ```
 
 The dashboard can be viewed at [http://127.0.0.1:8001/ui](http://127.0.0.1:8001/ui). That little `/ui` bit is important, otherwise Kubernetes will just give you the middle finger.
+
+## Display latest events
+
+The following command shows the latest events (pod scheduling and so on) which occurred on the cluster:
+
+```
+~/Projects/k8s-workshop$ kubectl get events
+```
+
+This can be useful to see whether there are restarting pods, and/or which pods are currently misbehaving (and thus being killed and restarted).
