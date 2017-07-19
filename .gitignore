@@ -4,3 +4,4 @@ env.sh
 kubeconfig*
 /certificates/
 /00-prep/
+kubectl*
