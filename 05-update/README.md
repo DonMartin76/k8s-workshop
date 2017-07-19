@@ -89,5 +89,5 @@ After one to two minutes, the entire replacement process should have finished, a
 You can also try issuing the following command to see in real time what Kubernetes does in terms of terminating and recreating containers:
 
 ```
-~/Projects/k8s-workshop$ kubect get pods --watch
+~/Projects/k8s-workshop$ kubectl get pods --watch
 ```

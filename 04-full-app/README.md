@@ -144,10 +144,18 @@ portal-kong-adapter-95295708-c8cdq       1/1       Running   0          3m      
 
 ## Testing the app
 
-You should now be able to open up the "Markdown Notes" application with your browser:
+You should now be able to open up the "Markdown Notes" application with your browser. Using macOS, this command will do that:
 
 ```
 ~/Projects/k8s-workshop$ open https://notes.${YOUR_NAME}.${DNS_ZONE}
 ```
 
 The application works best with Chrome, it's not been extensively tested on other browsers (but should also work in Safari and Firefox, Edge/IE has not been tested at all).
+
+For Windows, same game as before:
+
+```
+$ echo https://notes.${YOUR_NAME}.${DNS_ZONE}
+```
+
+Copy/paste into your browser.
