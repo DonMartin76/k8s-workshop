@@ -16,7 +16,7 @@ for d in portal api notes; do
   openssl genrsa -out certificates/$d-key.pem 2048
   commonName=${APP_HOST}
   if [[ $d == portal ]]; then commonName="${PORTAL_NETWORK_PORTALHOST}"; fi
-  if [[ $d == gateway ]]; then commonName="${PORTAL_NETWORK_APIHOST}"; fi
+  if [[ $d == api ]]; then commonName="${PORTAL_NETWORK_APIHOST}"; fi
   if [[ $(uname -o) == Msys ]]; then
     # This is a mindblowingly stupid syntax, see
     # https://stackoverflow.com/questions/31506158/running-openssl-from-a-bash-script-on-windows-subject-does-not-start-with
