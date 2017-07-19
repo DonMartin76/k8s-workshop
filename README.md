@@ -21,14 +21,14 @@ Check the following prerequisites:
     * Recent Windows installation of Git for Windows should be sufficient
 * A GitHub account (we need this to provision OAuth2 credentials)
 
-**For Windows**: After starting a git Bash windows, issue the following command:
+**For Windows**: After starting a git bash window, issue the following command:
 
 ```
-MartinD@HGDECWFR002121 MINGW64 ~~
+MartinD@HGDECWFR002121 MINGW64 ~
 $ alias az=az.cmd
 ```
 
-This will make the Azure command line utility available as `az` in git bash as well (otherwise it only works in `cmd.exe`).
+This will make the Azure command line utility available as `az` in git bash as well (otherwise it only works in `cmd.exe`, isn't cross platform tooling awesome?).
 
 ## Creating an `env.sh`
 
