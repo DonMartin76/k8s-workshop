@@ -57,11 +57,23 @@ $ brew install kubectl
 
 ### On macOS or Windows - using `az`
 
-As an alternative, the `az` command line tool also provides a way to install the command line utility:
+As an alternative, the `az` command line tool also provides a way to install the command line utility. **IMPORTANT for Windows**: Run the following command in a "Command Line" run as **Administrator**! Otherwise it will not work. I.e., it will **not** work from the git bash shell.
 
 ```
 ~/Projects/k8s-workshop$ az acs kubernetes install-cli
 ```
+
+### Windows - the hard way
+
+In case the above does not work, e.g. it might work but you can't call `kubectl` from git bash, do the following:
+
+In git bash, download the `kubectl.exe` binary directly to the current directory:
+
+```
+$ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.7.1/bin/windows/amd64/kubectl.exe
+```
+
+Then copy `kubectl.exe` to somewhere in your path; this may be `~/bin` or somewhere else. This may require some fiddling.
 
 ## Retrieving the `kubeconfig`
 
@@ -86,9 +98,9 @@ Now you should be able to verify that you can connect to the cluster using `kube
 ```
 ~/Projects/k8s-workshop$ kubectl get nodes
 NAME                    STATUS                     AGE       VERSION
-k8s-agent-54721596-0    Ready                      9m        v1.5.3
-k8s-agent-54721596-1    Ready                      9m        v1.5.3
-k8s-master-54721596-0   Ready,SchedulingDisabled   9m        v1.5.3
+k8s-agent-54721596-0    Ready                      9m        v1.6.6
+k8s-agent-54721596-1    Ready                      9m        v1.6.6
+k8s-master-54721596-0   Ready,SchedulingDisabled   9m        v1.6.6
 ```
 
 Woohoo!

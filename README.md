@@ -8,11 +8,27 @@ Check the following prerequisites:
 
 * You should be familiar with containers and docker, even if it's not a true prerequisite. But it does help.
 * Basic familiarity with the [Azure Portal](https://portal.azure.com); make sure you are able to log in using your `<login>@haufe.com` ID
-* [Installed Azure Command Line 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli); in case you already had it install, please run a `az component update`
-* A usable bash console, e.g. "Terminal" on macOS, "git bash" (if you're still on Win7) or ["Ubuntu bash" for Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide).
+* [Installed Azure Command Line 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+    * macOS: In case you already had it installed, please run a `az component update` (applicable only to macOS)
+    * Windows: Use the MSI installation package at [https://aka.ms/InstallAzureCliWindows](https://aka.ms/InstallAzureCliWindows)
+* A usable bash console, e.g.
+    * "Terminal" or "iTerm2" on macOS, 
+    * "git bash" on Windows. If you don't already have "git bash" installed, get [git for Windows here](https://git-for-windows.github.io). Using the Ubuntu Subsystem will **probably NOT work**. Use `git bash`. Thanks.
 * An ssh identity in `~/.ssh/id_rsa[.pub]`, **without** password protection
-* An `openssl` installation (check whether `openssl` in bash gives you a prompt, otherwise install it)
+    * In case you don't have such an identity, run `ssh-keygen` in your terminal (or `git bash` window)
+* A recent `openssl` installation (check whether `openssl` in bash gives you a prompt, otherwise install it)
+    * For macOS users: Please update to the latest `homebrew` version of OpenSSL (`brew update`, `brew install openssl`)
+    * Recent Windows installation of Git for Windows should be sufficient
 * A GitHub account (we need this to provision OAuth2 credentials)
+
+**For Windows**: After starting a git Bash windows, issue the following command:
+
+```
+MartinD@HGDECWFR002121 MINGW64 ~~
+$ alias az=az.cmd
+```
+
+This will make the Azure command line utility available as `az` in git bash as well (otherwise it only works in `cmd.exe`).
 
 ## Creating an `env.sh`
 
