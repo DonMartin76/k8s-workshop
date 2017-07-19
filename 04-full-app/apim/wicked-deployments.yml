@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: portal-api
-        image: haufelexware/wicked.portal-api:0.11.5
+        image: haufelexware/wicked.portal-api:0.11.7-alpine
         imagePullPolicy: Always
         env:
         - name: NODE_ENV
@@ -101,7 +101,7 @@ spec:
     spec:
       containers:
       - name: portal
-        image: haufelexware/wicked.portal:0.11.5
+        image: haufelexware/wicked.portal:0.11.7-alpine
         imagePullPolicy: Always
         env:
         - name: DEBUG
@@ -138,7 +138,7 @@ spec:
         service: portal-kong-adapter
     spec:
       containers:
-      - image: haufelexware/wicked.portal-kong-adapter:0.11.5
+      - image: haufelexware/wicked.portal-kong-adapter:0.11.7-alpine
         name: portal-kong-adapter
         imagePullPolicy: Always
         env:
