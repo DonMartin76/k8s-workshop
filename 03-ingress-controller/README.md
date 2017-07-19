@@ -145,11 +145,21 @@ Now apply the ingress resource, so that the ingress controller can create the ro
 ~/Projects/k8s-workshop$ kubectl apply -f 03-ingress-controller/ingress/notes-ingress.yml
 ```
 
-That's it for now. You can now use your own DNS entry to view the notes app being served from the cluster, via the ingress controller, from the correct DNS entry:
+That's it for now. You can now use your own DNS entry to view the notes app being served from the cluster, via the ingress controller, from the correct DNS entry.
+
+For macOS, you can just use the following command:
 
 ```
 ~/Projects/k8s-workshop$ open https://$APP_HOST
 ```
+
+For Windows, do a
+
+```
+$ echo https://$APP_HOST
+```
+
+Then copy/paste the URL into your browser of choice; note that you will have to accept the self signed certificate.
 
 **Note**: You will have to accept the self-signed certificate to make this work.
 

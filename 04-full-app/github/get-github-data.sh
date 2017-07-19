@@ -32,7 +32,15 @@ echo "  . env.sh"
 echo "to update the environment variables."
 echo ""
 echo ""
-echo "The script will open the GitHub app registration page in 10 seconds."
-sleep 10
-echo "Running open https://github.com/settings/applications/new"
-open https://github.com/settings/applications/new
+
+if [[ $(uname -o) == Msys ]]; then
+    echo "Open the following page to register your GitHub apps:"
+    echo ""
+    echo "   https://github.com/settings/applications/new"
+    echo ""
+else
+    echo "The script will open the GitHub app registration page in 10 seconds."
+    sleep 10
+    echo "Running open https://github.com/settings/applications/new"
+    open https://github.com/settings/applications/new
+fi

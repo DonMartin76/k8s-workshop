@@ -7,6 +7,13 @@ fi
 
 source ./env.sh
 
+if [[ $(uname -o) == Msys ]]; then
+    echo "Defining az alias for Windows"
+    function az() {
+        az.cmd $@
+    }
+fi
+
 if [ -z "$1" ]; then
     echo "Usage: $0 <ip of load balancer>"
     exit 1
