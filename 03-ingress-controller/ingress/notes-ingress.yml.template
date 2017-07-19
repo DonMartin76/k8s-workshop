@@ -16,7 +16,7 @@ spec:
   - host: ${APP_HOST}
     http:
       paths:
-      - path:
+      - path: /
         backend:
           serviceName: notes-app
           servicePort: 80
