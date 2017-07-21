@@ -51,6 +51,8 @@ In preparation for the next steps, let's create some self signed certificates we
 
 First, create self signed certificates using the following script
 
+**IMPORTANT**: YOU WILL NEED A VERY RECENT OPENSSL TO DO THIS. For macOS: run `brew install openssl`, for Windows, in doubt, reinstall "Git for Windows" and tick the check box that you want "OpenSSL" installed. If `openssl` starts to ask you questions during the execution of the script, you are using the wrong OpenSSL version.
+
 ```
 ~/Projects/k8s-workshop$ ./03-ingress-controller/certificates/create-certificates.sh
 ...
@@ -81,7 +83,7 @@ INFO: Setting up A records to point to 13.74.33.9
 ...
 ```
 
-These will be used as VHOST definitions in the ingress resources for the different services. Verify that one of the DNS entries works, by issuing a ping to it:
+These will be used as VHOST definitions in the ingress resources for the different services. Verify that one of the DNS entries works, by issuing a ping to it (**IMPORTANT**: It's normal that the `ping` does not go through!):
 
 ```
 ~/Projects/k8s-workshop$ echo $PORTAL_NETWORK_APIHOST
