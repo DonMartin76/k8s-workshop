@@ -89,7 +89,7 @@ For convenience, the `az` tool provides the following command to copy the file f
     --file ./kubeconfig
 ```
 
-Now you will have a local `kubeconfig` file which contains the credentias and URL to talk to the Kubernetes cluster. If you check the `env.sh` file you will find an environment variable `KUBECONFIG` which already points to this file; this means `kubectl` will use this configuration file. Otherwise, `kubectl` would search in `~/.kube/config`, but it's often more convenient to explicitly specify which `kubeconfig` file you want to use.
+Now you will have a local `kubeconfig` file which contains the credentials and URL to talk to the Kubernetes cluster. If you check the `env.sh` file you will find an environment variable `KUBECONFIG` which already points to this file; this means `kubectl` will use this configuration file. Otherwise, `kubectl` would search in `~/.kube/config`, but it's often more convenient to explicitly specify which `kubeconfig` file you want to use.
 
 ## Verify cluster connectivity
 
