@@ -92,3 +92,12 @@ Starting to serve on 127.0.0.1:8001
 While you have not yet pressed Ctrl-C, you will now be able to browse the Kubernetes Dashboard at [127.0.0.1:8001/ui](http://127.0.0.1:8001/ui).
 
 The Dashboard exposes most everything from the cluster, like Deployments, Services, ConfigMaps, Node status, ReplicaSets, Volume Configurations and more. This is a valuable tool, but over time you tend to either use other Dashboarding tools, or to just use `kubectl` from the command line.
+
+**Note**: In some cases, the port 8001 is already taken (by some telephony service e.g.); if that happens, use a different port for tunneling the UI:
+
+```
+~/Projects/k8s-workshop$ kubectl proxy --port=8002
+Starting to serve on 127.0.0.1:8002
+```
+
+Adapt the port in the URL for the dashboard correspondingly, e.g. [http://127.0.0.1:8002/ui](http://127.0.0.1:8002/ui).
