@@ -29,7 +29,7 @@ Note the usage of the additional parameter `-owide`; it adds some more informati
 
 ## Accessing the pods
 
-Note that we cannot access the container/pod just yet, as we haven't let created any services or ingresses yet. We'll come to that in a minute, but we can still port forward us into a specific container with the following command. Copy one of the pod names from above, e.g. `notes-app-2134041113-h828f` (this name will be different on your cluster):
+Note that we cannot access the container/pod just yet, as we haven't yet created any services or ingresses yet. We'll come to that in a minute, but we can still port forward us into a specific container with the following command. Copy one of the pod names from above, e.g. `notes-app-2134041113-h828f` (this name will be different on your cluster):
 
 ```
 ~/Projects/k8s-workshop$ kubectl port-forward notes-app-2134041113-h828f 8080:80

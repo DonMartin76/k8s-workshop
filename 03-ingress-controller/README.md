@@ -4,7 +4,7 @@ The Ingress Controller in a Kubernetes Cluster does just what the name says: It 
 
 Any ingress controller will open up the cluster at a single place, usually on one or two ports on all nodes, which are in turn load balanced using the cloud provider's native means; on Azure this means the Azure Load Balancer, and ACS is of course automatically configured in a way that services with the type `LoadBalancer` automatically provisions an Azure Load Balancer.
 
-So let's do this. We will now deploy an `nginx` derived Ingress Controller, which is one of the most usual ingress controllers used in the Kubernetes Community. Others are implemented on top of HAproxy, or traefic.
+So let's do this. We will now deploy an `nginx` derived Ingress Controller, which is one of the most usual ingress controllers used in the Kubernetes Community. Others are implemented on top of HAproxy, or traefik.
 
 ## Deploying a default backend
 
